@@ -1,4 +1,10 @@
-﻿--
+﻿-- Replace the following data
+-- Ia_joomla with correct database
+-- ianwu_ with file prefix
+-- 2020-01-01 with today date
+-- 854 to the user who created the records
+
+--
 -- Database: `Ia_joomla`
 --
 USE Ia_joomla;
@@ -9,7 +15,7 @@ USE Ia_joomla;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
-SET time_zone = "+02:00";
+SET time_zone = "+00:00";
 
 --
 -- Drop table just while in development
@@ -20,37 +26,36 @@ SET time_zone = "+02:00";
 -- Table structure for table `ianwu_aa_assignment_category`
 --
 CREATE TABLE `ianwu_aa_assignment_category` (
-  `assicate_id` int(11) NOT NULL,
-  `assicate_name` varchar(50) COLLATE utf8_general_ci,
-  `assicate_desc` text COLLATE utf8_general_ci,
-  `assicate_active` text COLLATE utf8_general_ci,
-  `assicate_private` text COLLATE utf8_general_ci,
-  `assicate_from` datetime,
-  `assicate_to` datetime,
-  `assicate_createdate` datetime,
-  `assicate_createby` varchar(50) COLLATE utf8_general_ci,
-  `assicate_editdate` datetime,
-  `assicate_editby` varchar(50) COLLATE utf8_general_ci
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci COMMENT='Table to store assignment categories';
+  `id` int(11) NOT NULL,
+  `name` varchar(50) DEFAULT NULL,
+  `description` text,
+  `active` text,
+  `private` text,
+  `created` datetime DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified` datetime DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Table to store assignment categories';
 
 --
 -- Dumping data for table `ianwu_aa_assignment_category`
 --
-INSERT INTO `ianwu_aa_assignment_category` (`assicate_id`, `assicate_name`, `assicate_desc`, `assicate_active`, `assicate_private`) VALUES
-(1, 'ASSIGNMENT', 'Audit assignment', '1', '0'),
-(2, 'ADMINISTRATION', 'Office administration', '1', '0'),
-(3, 'PRIVATE', 'Private work', '1', '1'),
-(4, 'CONSULTATION', 'Consultation work', '1', '0'),
-(5, 'DEVELOPMENT', 'Software development', '1', '0');
+INSERT INTO `ianwu_aa_assignment_category` (`id`, `name`, `description`, `active`, `private`, `created`, `created_by`) VALUES
+(1, 'ADMINISTRATION', 'Office administration.', '1', '0', '2020-01-01 00:00:00', 854),
+(2, 'ASSIGNMENT', 'Audit assignments.', '1', '0', '2020-01-01 00:00:00', 854),
+(3, 'CONSULTATION', 'Consultation work.', '1', '0', '2020-01-01 00:00:00', 854),
+(4, 'DEVELOPMENT', 'Software development.', '1', '0', '2020-01-01 00:00:00', 854),
+(5, 'PRIVATE', 'Private work.', '1', '1', '2020-01-01 00:00:00', 854);
 
 --
 -- Indexes for table `ianwu_aa_assignment_category`
 --
 ALTER TABLE `ianwu_aa_assignment_category`
-  ADD PRIMARY KEY (`assicate_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- AUTO_INCREMENT for table `ianwu_aa_assignment_category`
 --
 ALTER TABLE `ianwu_aa_assignment_category`
-  MODIFY `assicate_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+COMMIT;
